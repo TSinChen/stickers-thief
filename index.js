@@ -38,7 +38,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       chrome.scripting?.executeScript({
         target: { tabId: tab.id },
         function: () => {
-          const backgroundImage = window.getComputedStyle(window.getSelection().focusNode).backgroundImage
+          const target = window.getSelection().focusNode.parentElement
+          const backgroundImage = window.getComputedStyle(target.children[target.childElementCount - 1]).backgroundImage
           const url = backgroundImage.match(/url\("(.+)"\)/)[1]
           fetch(url)
             .then(res => res.blob())
@@ -59,7 +60,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       chrome.scripting?.executeScript({
         target: { tabId: tab.id },
         function: () => {
-          const backgroundImage = window.getComputedStyle(window.getSelection().focusNode).backgroundImage
+          const target = window.getSelection().focusNode.parentElement
+          const backgroundImage = window.getComputedStyle(target.children[target.childElementCount - 1]).backgroundImage
           const url = backgroundImage.match(/url\("(.+)"\)/)[1]
           fetch(url)
             .then(res => res.blob())
