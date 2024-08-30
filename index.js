@@ -38,7 +38,17 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       chrome.scripting?.executeScript({
         target: { tabId: tab.id },
         function: () => {
-          const target = window.getSelection().focusNode.parentElement;
+          // 如果使用者在貼圖上按左鍵，會把貼圖放大，這時候要做不同處理
+          const focusedElements = document.querySelectorAll(
+            ".FnPreviewImage:not(.MdNonDisp)"
+          );
+          let target = null;
+          if (focusedElements.length) {
+            target = focusedElements[0];
+          } else {
+            target = window.getSelection().focusNode.parentElement;
+          }
+          if (!target) return;
           const backgroundImage = window.getComputedStyle(
             target.children[target.childElementCount - 1]
           ).backgroundImage;
@@ -62,7 +72,17 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       chrome.scripting?.executeScript({
         target: { tabId: tab.id },
         function: () => {
-          const target = window.getSelection().focusNode.parentElement;
+          // 如果使用者在貼圖上按左鍵，會把貼圖放大，這時候要做不同處理
+          const focusedElements = document.querySelectorAll(
+            ".FnPreviewImage:not(.MdNonDisp)"
+          );
+          let target = null;
+          if (focusedElements.length) {
+            target = focusedElements[0];
+          } else {
+            target = window.getSelection().focusNode.parentElement;
+          }
+          if (!target) return;
           const backgroundImage = window.getComputedStyle(
             target.children[target.childElementCount - 1]
           ).backgroundImage;
