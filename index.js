@@ -61,9 +61,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               a.style.display = "none";
               a.href = url;
               a.download = `${window.document.title}.png`;
-              document.body.appendChild(a);
               a.click();
               window.URL.revokeObjectURL(url);
+              a.remove();
             });
         },
       });
