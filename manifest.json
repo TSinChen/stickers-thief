@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "貼圖小偷",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "permissions": ["contextMenus", "activeTab", "scripting"],
   "background": {
     "service_worker": "index.js"
