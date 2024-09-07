@@ -16,7 +16,10 @@ chrome.runtime.onInstalled.addListener(() => {
     id: MENU_ITEM_NAME,
     title: MENU_ITEM_NAME,
     contexts: ["all"],
-    documentUrlPatterns: ["https://store.line.me/stickershop/product/*"],
+    documentUrlPatterns: [
+      "https://store.line.me/stickershop/product/*",
+      "https://store.line.me/emojishop/product/*",
+    ],
   });
   chrome.contextMenus.create({
     id: MENU_SUB_ITEM_NAME.downloadImage.id,
